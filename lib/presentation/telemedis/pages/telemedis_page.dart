@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clinicmobile_app_kevin/core/extensions/build_context_ext.dart';
+import 'package:flutter_clinicmobile_app_kevin/main.dart';
+import 'package:flutter_clinicmobile_app_kevin/presentation/telemedis/bloc/bloc/doctor_telemedis_bloc.dart';
 
 import '../../../../core/assets/assets.gen.dart';
 import '../../../../core/components/spaces.dart';
@@ -15,32 +18,14 @@ class TelemedisPage extends StatefulWidget {
 }
 
 class _TelemedisPageState extends State<TelemedisPage> {
-  List<Map<String, dynamic>> doctors = [
-    {
-      'image': Assets.images.doctor4.path,
-      'name': 'dr. Nova Riyanti Yusuf',
-      'specialist': 'Spesialis Anak',
-      'clinic': 'Klinik Pratama Sentosa',
-      'time': '11:00 - 12:00 WIB',
-      'price': 'Rp. 50.000',
-    },
-    {
-      'image': Assets.images.doctor5.path,
-      'name': 'dr. Listya Kusumastuti',
-      'specialist': 'Spesialis Kandungan',
-      'clinic': 'Klinik Medika Utama',
-      'time': '11:00 - 12:00 WIB',
-      'price': 'Rp. 60.000',
-    },
-    {
-      'image': Assets.images.doctor6.path,
-      'name': 'dr. Anita, Sp.KJ',
-      'specialist': 'Spesialis Psikiater',
-      'clinic': 'Klinik Medika Utama',
-      'time': '11:00 - 12:00 WIB',
-      'price': 'Rp. 40.000',
-    }
-  ];
+  @override
+  void initState() {
+    context
+        .read<DoctorTelemedisBloc>()
+        .add(DoctorTelemedisEvent.getDoctorTelemedis());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -91,22 +76,35 @@ class _TelemedisPageState extends State<TelemedisPage> {
               const SpaceHeight(
                 136,
               ),
-              ListView.separated(
-                padding: const EdgeInsets.all(20),
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: doctors.length,
-                separatorBuilder: (BuildContext context, int index) {
-                  return const SpaceHeight(10);
-                },
-                itemBuilder: (BuildContext context, int index) {
-                  return CardDoctorTelemedis(
-                    image: doctors[index]['image'],
-                    name: doctors[index]['name'],
-                    spesialis: doctors[index]['specialist'],
-                    clinic: doctors[index]['clinic'],
-                    time: doctors[index]['time'],
-                    price: doctors[index]['price'],
+              BlocBuilder<DoctorTelemedisBloc, DoctorTelemedisState>(
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    orElse: () {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    },
+                    loaded: (doctors) {
+                      return doctors.isEmpty
+                          ? const Center(
+                              child: Text('Data tidak ditemukan'),
+                            )
+                          : ListView.separated(
+                              padding: const EdgeInsets.all(20),
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: doctors.length,
+                              separatorBuilder:
+                                  (BuildContext context, int index) {
+                                return const SpaceHeight(10);
+                              },
+                              itemBuilder: (BuildContext context, int index) {
+                                return CardDoctorTelemedis(
+                                  user: doctors[index],
+                                );
+                              },
+                            );
+                    },
                   );
                 },
               ),

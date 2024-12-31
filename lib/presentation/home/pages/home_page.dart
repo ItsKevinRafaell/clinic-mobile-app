@@ -19,8 +19,8 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    const ChatPage(),
     const TelemedisPage(),
+    const ChatPage(),
 
     const HistoryPage(),
     const ProfilePage(),
@@ -60,18 +60,18 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             NavItem(
-              iconPath: Assets.icons.chat.path,
-              label: 'Chat',
-              isActive: _selectedIndex == 0,
-              onTap: () => _onItemTapped(0),
-            ),
-            NavItem(
                 iconPath: Assets.icons.telemedis.path,
                 label: 'Telemedis',
-                isActive: _selectedIndex == 1,
+                isActive: _selectedIndex == 0,
                 onTap: () {
                   _onItemTapped(1);
                 }),
+            NavItem(
+              iconPath: Assets.icons.chat.path,
+              label: 'Chat',
+              isActive: _selectedIndex == 0,
+              onTap: () => _onItemTapped(1),
+            ),
             NavItem(
               iconPath: Assets.icons.note.path,
               label: 'History',

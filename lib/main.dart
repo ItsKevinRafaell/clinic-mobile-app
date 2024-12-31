@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_clinicmobile_app_kevin/data/datasources/doctor_remote_datasource.dart';
 import 'package:flutter_clinicmobile_app_kevin/presentation/auth/pages/onboarding_page.dart';
+import 'package:flutter_clinicmobile_app_kevin/presentation/home/pages/home_page.dart';
+import 'package:flutter_clinicmobile_app_kevin/presentation/telemedis/bloc/bloc/doctor_telemedis_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -26,29 +30,36 @@ class MyApp extends StatelessWidget {
       statusBarColor: AppColors.primary,
       statusBarBrightness: Brightness.dark,
     ));
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
-        useMaterial3: true,
-        textTheme: GoogleFonts.poppinsTextTheme(
-          Theme.of(context).textTheme,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => DoctorTelemedisBloc(DoctorRemoteDatasource()),
         ),
-        appBarTheme: AppBarTheme(
-          color: AppColors.white,
-          elevation: 0,
-          titleTextStyle: GoogleFonts.poppins(
-            color: AppColors.primary,
-            fontSize: 16.0,
-            fontWeight: FontWeight.w500,
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
+          useMaterial3: true,
+          textTheme: GoogleFonts.poppinsTextTheme(
+            Theme.of(context).textTheme,
           ),
-          iconTheme: const IconThemeData(
-            color: AppColors.primary,
+          appBarTheme: AppBarTheme(
+            color: AppColors.white,
+            elevation: 0,
+            titleTextStyle: GoogleFonts.poppins(
+              color: AppColors.primary,
+              fontSize: 16.0,
+              fontWeight: FontWeight.w500,
+            ),
+            iconTheme: const IconThemeData(
+              color: AppColors.primary,
+            ),
           ),
         ),
+        home: const HomePage(),
       ),
-      home: const OnboardingPage(),
     );
   }
 }
