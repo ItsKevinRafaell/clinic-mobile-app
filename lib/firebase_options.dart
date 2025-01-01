@@ -59,4 +59,5 @@ class DefaultFirebaseOptions {
     projectId: 'clinic-app-de70a',
     storageBucket: 'clinic-app-de70a.firebasestorage.app',
   );
+
 }

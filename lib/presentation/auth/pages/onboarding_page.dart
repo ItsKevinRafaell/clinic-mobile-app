@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clinicmobile_app_kevin/core/extensions/build_context_ext.dart';
+import 'package:flutter_clinicmobile_app_kevin/presentation/auth/bloc/login_google_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../../core/assets/assets.gen.dart';
@@ -26,6 +28,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
     // Obtain the auth details from the request
     final GoogleSignInAuthentication? googleAuth =
         await googleUser?.authentication;
+
+    context
+        .read<LoginGoogleBloc>()
+        .add(LoginGoogleEvent.loginGoogle(googleAuth?.idToken ?? ''));
 
     // Create a new credential
     final credential = GoogleAuthProvider.credential(
@@ -105,20 +111,41 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       const SpaceHeight(
                         36,
                       ),
-                      Button.filled(
-                        height: 48,
-                        onPressed: () async {
-                          await signInWithGoogle();
-                          // context.push(const PrivacyPolicyPage());
+                      BlocConsumer<LoginGoogleBloc, LoginGoogleState>(
+                        listener: (context, state) {
+                          state.maybeWhen(
+                              orElse: () {},
+                              success: (data) {
+                                context.push(const DoctorHomePage());
+                              },
+                              error: (message) {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                  content: Text(message),
+                                ));
+                              });
                         },
-                        label: 'Masuk dengan Google',
-                        icon: Image.asset(
-                          Assets.images.google.path,
-                          height: 24,
-                          width: 24,
-                          color: Colors.white,
-                        ),
-                        fontSize: 14.0,
+                        builder: (context, state) {
+                          return state.maybeWhen(orElse: () {
+                            return Button.filled(
+                              height: 48,
+                              onPressed: () async {
+                                await signInWithGoogle();
+                              },
+                              label: 'Masuk dengan Google',
+                              icon: Image.asset(
+                                Assets.images.google.path,
+                                height: 24,
+                                width: 24,
+                                color: Colors.white,
+                              ),
+                              fontSize: 14.0,
+                            );
+                          }, loading: () {
+                            return Center(
+                                child: const CircularProgressIndicator());
+                          });
+                        },
                       ),
                       const SpaceHeight(26),
                       Button.filled(
