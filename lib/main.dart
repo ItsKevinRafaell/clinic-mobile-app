@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_clinicmobile_app_kevin/data/datasources/auth_remote_datasource.dart';
 import 'package:flutter_clinicmobile_app_kevin/data/datasources/doctor_remote_datasource.dart';
+import 'package:flutter_clinicmobile_app_kevin/presentation/auth/bloc/login_google_bloc.dart';
 import 'package:flutter_clinicmobile_app_kevin/presentation/auth/pages/onboarding_page.dart';
 import 'package:flutter_clinicmobile_app_kevin/presentation/home/pages/home_page.dart';
 import 'package:flutter_clinicmobile_app_kevin/presentation/telemedis/bloc/bloc/doctor_telemedis_bloc.dart';
@@ -35,6 +37,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => DoctorTelemedisBloc(DoctorRemoteDatasource()),
         ),
+        BlocProvider(
+          create: (context) => LoginGoogleBloc(AuthRemoteDatasource()),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -58,7 +63,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        home: const HomePage(),
+        home: const OnboardingPage(),
       ),
     );
   }
