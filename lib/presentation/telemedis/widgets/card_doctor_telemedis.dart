@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_clinicmobile_app_kevin/core/extensions/build_context_ext.dart';
-import 'package:flutter_clinicmobile_app_kevin/data/models/doctor_response_model.dart';
+import 'package:flutter_clinicmobile_app_kevin/data/models/response/doctor_response_model.dart';
 
 import '../../../../core/assets/assets.gen.dart';
 import '../../../../core/components/spaces.dart';

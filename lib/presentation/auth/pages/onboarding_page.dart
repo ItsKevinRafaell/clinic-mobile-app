@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clinicmobile_app_kevin/core/extensions/build_context_ext.dart';
 import 'package:flutter_clinicmobile_app_kevin/data/datasources/auth_local_datasource.dart';
-import 'package:flutter_clinicmobile_app_kevin/presentation/auth/bloc/login_google_bloc.dart';
+import 'package:flutter_clinicmobile_app_kevin/presentation/auth/blocs/login_google/login_google_bloc.dart';
 import 'package:flutter_clinicmobile_app_kevin/presentation/home/pages/home_page.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -30,6 +31,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
     // Obtain the auth details from the request
     final GoogleSignInAuthentication? googleAuth =
         await googleUser?.authentication;
+
+    context
+        .read<LoginGoogleBloc>()
+        .add(LoginGoogleEvent.loginGoogle(googleAuth?.idToken ?? ''));
 
     context
         .read<LoginGoogleBloc>()

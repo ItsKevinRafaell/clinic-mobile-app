@@ -1,7 +1,10 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clinicmobile_app_kevin/core/extensions/build_context_ext.dart';
+import 'package:flutter_clinicmobile_app_kevin/data/models/request/user_request_model.dart';
+import 'package:flutter_clinicmobile_app_kevin/presentation/auth/blocs/update_user/update_user_bloc.dart';
 
 import '../../../../core/components/spaces.dart';
 import '../../../../core/constants/colors.dart';
@@ -18,8 +21,30 @@ class DataPenggunaPage extends StatefulWidget {
 
 class _DataPenggunaPageState extends State<DataPenggunaPage> {
   String? _selectedGender;
-  final TextEditingController _dateController = TextEditingController();
-  final TextEditingController phoneController = TextEditingController();
+  String? birthDate;
+  TextEditingController? nameController;
+  TextEditingController? dateController;
+  TextEditingController? phoneController;
+  TextEditingController? addressController;
+
+  @override
+  void initState() {
+    super.initState();
+    nameController = TextEditingController();
+    dateController = TextEditingController();
+    phoneController = TextEditingController();
+    addressController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    nameController?.dispose();
+    dateController?.dispose();
+    phoneController?.dispose();
+    addressController?.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -99,7 +124,7 @@ class _DataPenggunaPageState extends State<DataPenggunaPage> {
                     8,
                   ),
                   CustomTextField(
-                    controller: TextEditingController(),
+                    controller: nameController!,
                     label: 'Sinta Saras',
                     textInputAction: TextInputAction.next,
                   ),
@@ -117,23 +142,26 @@ class _DataPenggunaPageState extends State<DataPenggunaPage> {
                     8,
                   ),
                   CustomTextField(
-                    controller: _dateController,
+                    controller: dateController!,
                     label: 'dd-mm-yyyy',
                     readOnly: true,
                     textInputAction: TextInputAction.next,
                     suffixIcon: GestureDetector(
-                      onTap: () {
-                        showDatePicker(
+                      onTap: () async {
+                        final date = await showDatePicker(
                           context: context,
                           initialDate: DateTime(2000),
                           firstDate: DateTime(1900),
                           lastDate: DateTime.now(),
-                        ).then((value) {
-                          if (value != null) {
-                            _dateController.text =
-                                "${value.day}-${value.month}-${value.year}";
-                          }
-                        });
+                        );
+
+                        if (date != null) {
+                          setState(() {
+                            birthDate =
+                                '${date.day}-${date.month}-${date.year}';
+                            dateController!.text = birthDate!;
+                          });
+                        }
                       },
                       child: const Icon(
                         Icons.calendar_today,
@@ -240,7 +268,7 @@ class _DataPenggunaPageState extends State<DataPenggunaPage> {
                     8,
                   ),
                   CustomTextField(
-                    controller: phoneController,
+                    controller: phoneController!,
                     label: '',
                     keyboardType: TextInputType.number,
                     prefixIcon: Container(
@@ -279,7 +307,7 @@ class _DataPenggunaPageState extends State<DataPenggunaPage> {
                     8,
                   ),
                   CustomTextField(
-                    controller: TextEditingController(),
+                    controller: addressController!,
                     label: 'Jl. Jago Flutter No. 32',
                     maxLines: 3,
                     textInputAction: TextInputAction.done,
@@ -295,37 +323,69 @@ class _DataPenggunaPageState extends State<DataPenggunaPage> {
         height: 52,
         margin: const EdgeInsets.all(20),
         width: context.deviceWidth,
-        child: Button.filled(
-          height: 48,
-          onPressed: () {
-            AwesomeDialog(
-              context: context,
-              customHeader: const Icon(
-                Icons.check_circle,
-                size: 80,
-                color: AppColors.primary,
-              ),
-              btnOk: Container(
-                margin: const EdgeInsets.only(bottom: 20),
-                child: Button.filled(
-                  onPressed: () {
-                    context.push(const HomePage());
-                  },
-                  label: 'Lanjut',
-                  fontSize: 16.0,
-                ),
-              ),
-              dialogType: DialogType.success,
-              animType: AnimType.bottomSlide,
-              title: 'Berhasil',
-              desc: 'Data berhasil disimpan',
-              btnOkOnPress: () {
-                context.push(const HomePage());
-              },
-            ).show();
+        child: BlocConsumer<UpdateUserBloc, UpdateUserState>(
+          listener: (context, state) {
+            state.maybeWhen(
+                orElse: () {},
+                error: (message) {
+                  context.showSnackBar(message, Colors.red);
+                },
+                success: (user) {
+                  context.showSnackBar(
+                      'Data berhasil disimpan', AppColors.primary);
+                  context.push(const HomePage());
+                });
           },
-          label: 'Simpan',
-          fontSize: 16.0,
+          builder: (context, state) {
+            return state.maybeWhen(orElse: () {
+              return Button.filled(
+                height: 48,
+                onPressed: () {
+                  final user = UserRequestModel(
+                      name: nameController!.text,
+                      address: addressController!.text,
+                      birthDate: birthDate!,
+                      gender: _selectedGender! == 'Pria' ? 'male' : 'female',
+                      phoneNumber: "62${phoneController!.text}");
+
+                  context
+                      .read<UpdateUserBloc>()
+                      .add(UpdateUserEvent.updateUser(user));
+                  // AwesomeDialog(
+                  //   context: context,
+                  //   customHeader: const Icon(
+                  //     Icons.check_circle,
+                  //     size: 80,
+                  //     color: AppColors.primary,
+                  //   ),
+                  //   btnOk: Container(
+                  //     margin: const EdgeInsets.only(bottom: 20),
+                  //     child: Button.filled(
+                  //       onPressed: () {
+                  //         context.push(const HomePage());
+                  //       },
+                  //       label: 'Lanjut',
+                  //       fontSize: 16.0,
+                  //     ),
+                  //   ),
+                  //   dialogType: DialogType.success,
+                  //   animType: AnimType.bottomSlide,
+                  //   title: 'Berhasil',
+                  //   desc: 'Data berhasil disimpan',
+                  //   btnOkOnPress: () {
+                  //     context.push(const HomePage());
+                  //   },
+                  // ).show();
+                },
+                label: 'Simpan',
+                fontSize: 16.0,
+              );
+            }, loading: () {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            });
+          },
         ),
       ),
     );

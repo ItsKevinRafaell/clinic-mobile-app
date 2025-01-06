@@ -3,7 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clinicmobile_app_kevin/data/datasources/auth_remote_datasource.dart';
 import 'package:flutter_clinicmobile_app_kevin/data/datasources/doctor_remote_datasource.dart';
-import 'package:flutter_clinicmobile_app_kevin/presentation/auth/bloc/login_google_bloc.dart';
+import 'package:flutter_clinicmobile_app_kevin/data/datasources/user_remote_datasource.dart';
+import 'package:flutter_clinicmobile_app_kevin/presentation/auth/blocs/login_google/login_google_bloc.dart';
+import 'package:flutter_clinicmobile_app_kevin/presentation/auth/blocs/update_user/update_user_bloc.dart';
 import 'package:flutter_clinicmobile_app_kevin/presentation/auth/pages/onboarding_page.dart';
 import 'package:flutter_clinicmobile_app_kevin/presentation/home/pages/home_page.dart';
 import 'package:flutter_clinicmobile_app_kevin/presentation/telemedis/bloc/bloc/doctor_telemedis_bloc.dart';
@@ -40,6 +42,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => LoginGoogleBloc(AuthRemoteDatasource()),
         ),
+        BlocProvider(
+            create: (context) => UpdateUserBloc(UserRemoteDatasource())),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

@@ -27,7 +27,7 @@ class LoginResponseModel {
 }
 
 class LoginModel {
-  final User? user;
+  final UserModel? user;
   final String? token;
   final bool? isNew;
 
@@ -43,7 +43,7 @@ class LoginModel {
   String toJson() => json.encode(toMap());
 
   factory LoginModel.fromMap(Map<String, dynamic> json) => LoginModel(
-        user: json["user"] == null ? null : User.fromMap(json["user"]),
+        user: json["user"] == null ? null : UserModel.fromMap(json["user"]),
         isNew: json["is_new"],
         token: json["token"],
       );
@@ -55,7 +55,7 @@ class LoginModel {
       };
 }
 
-class User {
+class UserModel {
   final int? id;
   final String? name;
   final String? email;
@@ -79,7 +79,7 @@ class User {
   final String? status;
   final dynamic image;
 
-  User({
+  UserModel({
     this.id,
     this.name,
     this.email,
@@ -104,11 +104,11 @@ class User {
     this.image,
   });
 
-  factory User.fromJson(String str) => User.fromMap(json.decode(str));
+  factory UserModel.fromJson(String str) => UserModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory User.fromMap(Map<String, dynamic> json) => User(
+  factory UserModel.fromMap(Map<String, dynamic> json) => UserModel(
         id: json["id"],
         name: json["name"],
         email: json["email"],
