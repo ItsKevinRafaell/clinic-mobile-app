@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_clinicmobile_app_kevin/core/constants/global_variable.dart';
-import 'package:flutter_clinicmobile_app_kevin/data/models/doctor_response_mode.dart';
+import 'package:flutter_clinicmobile_app_kevin/data/models/doctor_response_model.dart';
 import 'package:http/http.dart' as http;
 
 class DoctorRemoteDatasource {

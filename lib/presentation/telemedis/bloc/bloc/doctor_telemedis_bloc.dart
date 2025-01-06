@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_clinicmobile_app_kevin/data/datasources/doctor_remote_datasource.dart';
-import 'package:flutter_clinicmobile_app_kevin/data/models/doctor_response_mode.dart';
+import 'package:flutter_clinicmobile_app_kevin/data/models/doctor_response_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'doctor_telemedis_event.dart';

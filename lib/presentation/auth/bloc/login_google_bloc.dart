@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_clinicmobile_app_kevin/data/datasources/auth_remote_datasource.dart';
+import 'package:flutter_clinicmobile_app_kevin/data/models/login_response_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'login_google_event.dart';

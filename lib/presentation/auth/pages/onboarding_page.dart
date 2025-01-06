@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clinicmobile_app_kevin/core/extensions/build_context_ext.dart';
+import 'package:flutter_clinicmobile_app_kevin/data/datasources/auth_local_datasource.dart';
 import 'package:flutter_clinicmobile_app_kevin/presentation/auth/bloc/login_google_bloc.dart';
+import 'package:flutter_clinicmobile_app_kevin/presentation/home/pages/home_page.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../../core/assets/assets.gen.dart';
@@ -115,8 +117,21 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         listener: (context, state) {
                           state.maybeWhen(
                               orElse: () {},
-                              success: (data) {
-                                context.push(const DoctorHomePage());
+                              success: (data) async {
+                                await AuthLocalDatasource().saveUserData(data);
+                                if (data.data!.user?.role! == 'doctor') {
+                                  context.push(const DoctorHomePage());
+                                  return;
+                                } else if (data.data!.user?.role! == 'admin') {
+                                  context.push(const AdminMainPage());
+                                  return;
+                                }
+
+                                if (data.data!.isNew!) {
+                                  context.push(const PrivacyPolicyPage());
+                                } else {
+                                  context.push(const HomePage());
+                                }
                               },
                               error: (message) {
                                 ScaffoldMessenger.of(context)

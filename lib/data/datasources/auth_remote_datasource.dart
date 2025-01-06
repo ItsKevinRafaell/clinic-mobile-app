@@ -1,10 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter_clinicmobile_app_kevin/core/constants/global_variable.dart';
+import 'package:flutter_clinicmobile_app_kevin/data/models/login_response_model.dart';
 import 'package:http/http.dart' as http;
 
 class AuthRemoteDatasource {
-  Future<String?> loginGoogle(String idToken) async {
+  Future<LoginResponseModel?> loginGoogle(String idToken) async {
     final response =
         await http.post(Uri.parse('${GlobalVariable.baseUrl}/api/login/google'),
             headers: {
@@ -14,7 +15,7 @@ class AuthRemoteDatasource {
             body: jsonEncode({'id_token': idToken}));
 
     if (response.statusCode == 200) {
-      return response.body;
+      return LoginResponseModel.fromMap(jsonDecode(response.body));
     } else {
       return null;
     }

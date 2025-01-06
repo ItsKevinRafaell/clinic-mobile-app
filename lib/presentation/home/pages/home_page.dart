@@ -64,12 +64,12 @@ class _HomePageState extends State<HomePage> {
                 label: 'Telemedis',
                 isActive: _selectedIndex == 0,
                 onTap: () {
-                  _onItemTapped(1);
+                  _onItemTapped(0);
                 }),
             NavItem(
               iconPath: Assets.icons.chat.path,
               label: 'Chat',
-              isActive: _selectedIndex == 0,
+              isActive: _selectedIndex == 1,
               onTap: () => _onItemTapped(1),
             ),
             NavItem(

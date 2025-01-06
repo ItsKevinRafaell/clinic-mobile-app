@@ -328,7 +328,7 @@ mixin _$LoginGoogleState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String data) success,
+    required TResult Function(LoginResponseModel data) success,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -336,7 +336,7 @@ mixin _$LoginGoogleState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String data)? success,
+    TResult? Function(LoginResponseModel data)? success,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -344,7 +344,7 @@ mixin _$LoginGoogleState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String data)? success,
+    TResult Function(LoginResponseModel data)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -440,7 +440,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String data) success,
+    required TResult Function(LoginResponseModel data) success,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -451,7 +451,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String data)? success,
+    TResult? Function(LoginResponseModel data)? success,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -462,7 +462,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String data)? success,
+    TResult Function(LoginResponseModel data)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -557,7 +557,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String data) success,
+    required TResult Function(LoginResponseModel data) success,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -568,7 +568,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String data)? success,
+    TResult? Function(LoginResponseModel data)? success,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -579,7 +579,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String data)? success,
+    TResult Function(LoginResponseModel data)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -637,7 +637,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String data});
+  $Res call({LoginResponseModel data});
 }
 
 /// @nodoc
@@ -653,13 +653,13 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? data = freezed,
   }) {
     return _then(_$SuccessImpl(
-      null == data
+      freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as String,
+              as LoginResponseModel,
     ));
   }
 }
@@ -670,7 +670,7 @@ class _$SuccessImpl implements _Success {
   const _$SuccessImpl(this.data);
 
   @override
-  final String data;
+  final LoginResponseModel data;
 
   @override
   String toString() {
@@ -682,11 +682,12 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            (identical(other.data, data) || other.data == data));
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, data);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   /// Create a copy of LoginGoogleState
   /// with the given fields replaced by the non-null parameter values.
@@ -701,7 +702,7 @@ class _$SuccessImpl implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String data) success,
+    required TResult Function(LoginResponseModel data) success,
     required TResult Function(String message) error,
   }) {
     return success(data);
@@ -712,7 +713,7 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String data)? success,
+    TResult? Function(LoginResponseModel data)? success,
     TResult? Function(String message)? error,
   }) {
     return success?.call(data);
@@ -723,7 +724,7 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String data)? success,
+    TResult Function(LoginResponseModel data)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -772,9 +773,9 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements LoginGoogleState {
-  const factory _Success(final String data) = _$SuccessImpl;
+  const factory _Success(final LoginResponseModel data) = _$SuccessImpl;
 
-  String get data;
+  LoginResponseModel get data;
 
   /// Create a copy of LoginGoogleState
   /// with the given fields replaced by the non-null parameter values.
@@ -853,7 +854,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String data) success,
+    required TResult Function(LoginResponseModel data) success,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -864,7 +865,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String data)? success,
+    TResult? Function(LoginResponseModel data)? success,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -875,7 +876,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String data)? success,
+    TResult Function(LoginResponseModel data)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
