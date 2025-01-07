@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clinicmobile_app_kevin/core/extensions/build_context_ext.dart';
 import 'package:flutter_clinicmobile_app_kevin/main.dart';
-import 'package:flutter_clinicmobile_app_kevin/presentation/telemedis/bloc/bloc/doctor_telemedis_bloc.dart';
+import 'package:flutter_clinicmobile_app_kevin/presentation/telemedis/blocs/doctor_telemedis/doctor_telemedis_bloc.dart';
 
 import '../../../../core/assets/assets.gen.dart';
 import '../../../../core/components/spaces.dart';

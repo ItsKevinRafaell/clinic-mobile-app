@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_clinicmobile_app_kevin/core/extensions/build_context_ext.dart';
+import 'package:flutter_clinicmobile_app_kevin/data/models/response/doctor_response_model.dart';
 
 import '../../../../core/assets/assets.gen.dart';
 import '../../../../core/components/spaces.dart';
@@ -12,27 +13,18 @@ import '../pages/chat_with_doctor_page.dart';
 import '../pages/detail_doctor_page.dart';
 
 class CardDoctorChat extends StatelessWidget {
-  final String image;
-  final String name;
-  final String clinic;
-  final String spesialis;
-  final String time;
-  final String price;
-  const CardDoctorChat({
-    super.key,
-    required this.image,
-    required this.name,
-    required this.clinic,
-    required this.spesialis,
-    required this.time,
-    required this.price,
-  });
+  final DoctorModel user;
+
+  const CardDoctorChat({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push(const DetailDoctorPage());
+        context.push(DetailDoctorPage(
+          doctor: user,
+          isTelemedis: false,
+        ));
       },
       child: Container(
         width: context.deviceWidth,
@@ -59,8 +51,8 @@ class CardDoctorChat extends StatelessWidget {
                     color: AppColors.primary,
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  child: Image.asset(
-                    image,
+                  child: Image.network(
+                    user.image ?? 'https://i.pravatar.cc/300',
                     width: 87.0,
                     height: 87.0,
                     fit: BoxFit.cover,
@@ -72,7 +64,7 @@ class CardDoctorChat extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        name,
+                        user.name!,
                         style: const TextStyle(
                           fontSize: 14.0,
                           fontWeight: FontWeight.w600,
@@ -81,7 +73,7 @@ class CardDoctorChat extends StatelessWidget {
                       ),
                       const SpaceHeight(4),
                       Text(
-                        spesialis,
+                        user.specialist?.name ?? '',
                         style: const TextStyle(
                           fontSize: 12.0,
                           fontWeight: FontWeight.w400,
@@ -91,12 +83,12 @@ class CardDoctorChat extends StatelessWidget {
                       const SpaceHeight(10),
                       _itemRow(
                         Assets.icons.hospitalPrimary.path,
-                        clinic,
+                        user.clinic?.name ?? '',
                       ),
                       const SpaceHeight(8),
                       _itemRow(
                         Assets.icons.clockPrimary.path,
-                        time,
+                        '${user.clinic?.openTime ?? ''} - ${user.clinic?.closeTime ?? ''}',
                       ),
                     ],
                   ),
@@ -120,7 +112,7 @@ class CardDoctorChat extends StatelessWidget {
                     ),
                     const SpaceHeight(4),
                     Text(
-                      price,
+                      'Rp ${user.chatFee}',
                       style: const TextStyle(
                         fontSize: 13.0,
                         fontWeight: FontWeight.w600,

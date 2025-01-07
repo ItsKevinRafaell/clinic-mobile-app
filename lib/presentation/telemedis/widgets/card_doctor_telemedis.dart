@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_clinicmobile_app_kevin/core/extensions/build_context_ext.dart';
 import 'package:flutter_clinicmobile_app_kevin/data/models/response/doctor_response_model.dart';
+import 'package:flutter_clinicmobile_app_kevin/presentation/chat/pages/detail_doctor_page.dart';
 
 import '../../../../core/assets/assets.gen.dart';
 import '../../../../core/components/spaces.dart';
@@ -11,7 +12,7 @@ import '../../../core/components/buttons.dart';
 import '../pages/vidcall_page.dart';
 
 class CardDoctorTelemedis extends StatelessWidget {
-  final User user;
+  final DoctorModel user;
   const CardDoctorTelemedis({
     super.key,
     required this.user,
@@ -21,7 +22,10 @@ class CardDoctorTelemedis extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push(const VidCallPage());
+        context.push(DetailDoctorPage(
+                        doctor: user,
+                        isTelemedis: true,
+                      ));
       },
       child: Container(
         width: context.deviceWidth,
@@ -122,7 +126,12 @@ class CardDoctorTelemedis extends StatelessWidget {
                   height: 34,
                   child: Button.filled(
                     borderRadius: 10,
-                    onPressed: () {},
+                    onPressed: () {
+                      context.push(DetailDoctorPage(
+                        doctor: user,
+                        isTelemedis: true,
+                      ));
+                    },
                     label: 'Telemedis',
                     fontSize: 12.0,
                   ),

@@ -17,4 +17,9 @@ class AuthLocalDatasource {
       return null;
     }
   }
+
+  Future<void> removeUserData() async {
+    final pref = await SharedPreferences.getInstance();
+    await pref.remove('user');
+  }
 }

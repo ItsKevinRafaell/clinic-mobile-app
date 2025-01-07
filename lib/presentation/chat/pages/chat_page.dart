@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clinicmobile_app_kevin/core/extensions/build_context_ext.dart';
+import 'package:flutter_clinicmobile_app_kevin/presentation/chat/bloc/doctor_chat/doctor_chat_bloc.dart';
 
 import '../../../core/assets/assets.gen.dart';
 
@@ -16,32 +18,12 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
-  List<Map<String, dynamic>> doctors = [
-    {
-      'image': Assets.images.doctor1.path,
-      'name': 'dr. Kiara Tasbiha',
-      'specialist': 'Spesialis kandungan',
-      'clinic': 'Klinik Sehat Prima',
-      'time': '11:00 - 12:00 WIB',
-      'price': 'Rp. 40.000',
-    },
-    {
-      'image': Assets.images.doctor3.path,
-      'name': 'dr. Rini Sekartini',
-      'specialist': 'Spesialis kesehatan umum anak',
-      'clinic': 'Klinik Sahabat Keluarga',
-      'time': '11:00 - 12:00 WIB',
-      'price': 'Rp. 35.000',
-    },
-    {
-      'image': Assets.images.doctor2.path,
-      'name': 'dr. Soedjatmiko, Sp.A(K)',
-      'specialist': 'Spesialisasi dalam pediatri',
-      'clinic': 'Klinik Citra Harapan',
-      'time': '11:00 - 12:00 WIB',
-      'price': 'Rp. 40.000',
-    },
-  ];
+  @override
+  void initState() {
+    context.read<DoctorChatBloc>().add(DoctorChatEvent.getDoctorChat());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -92,23 +74,33 @@ class _ChatPageState extends State<ChatPage> {
               const SpaceHeight(
                 136,
               ),
-              ListView.separated(
-                padding: const EdgeInsets.all(20),
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: doctors.length,
-                separatorBuilder: (BuildContext context, int index) {
-                  return const SpaceHeight(10);
-                },
-                itemBuilder: (BuildContext context, int index) {
-                  return CardDoctorChat(
-                    image: doctors[index]['image'],
-                    name: doctors[index]['name'],
-                    spesialis: doctors[index]['specialist'],
-                    clinic: doctors[index]['clinic'],
-                    time: doctors[index]['time'],
-                    price: doctors[index]['price'],
-                  );
+              BlocBuilder<DoctorChatBloc, DoctorChatState>(
+                builder: (context, state) {
+                  return state.maybeWhen(orElse: () {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }, loadeds: (doctors) {
+                    return doctors.isEmpty
+                        ? const Center(
+                            child: Text('Data tidak ditemukan'),
+                          )
+                        : ListView.separated(
+                            padding: const EdgeInsets.all(20),
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: doctors.length,
+                            separatorBuilder:
+                                (BuildContext context, int index) {
+                              return const SpaceHeight(10);
+                            },
+                            itemBuilder: (BuildContext context, int index) {
+                              return CardDoctorChat(
+                                user: doctors[index],
+                              );
+                            },
+                          );
+                  });
                 },
               ),
             ],

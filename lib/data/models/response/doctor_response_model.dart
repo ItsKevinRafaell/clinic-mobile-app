@@ -2,7 +2,7 @@ import 'dart:convert';
 
 class DoctorResponseModel {
   final String? status;
-  final List<User>? data;
+  final List<DoctorModel>? data;
 
   DoctorResponseModel({
     this.status,
@@ -19,7 +19,8 @@ class DoctorResponseModel {
         status: json["status"],
         data: json["data"] == null
             ? []
-            : List<User>.from(json["data"]!.map((x) => User.fromMap(x))),
+            : List<DoctorModel>.from(
+                json["data"]!.map((x) => DoctorModel.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
@@ -29,7 +30,7 @@ class DoctorResponseModel {
       };
 }
 
-class User {
+class DoctorModel {
   final int? id;
   final String? name;
   final String? email;
@@ -52,10 +53,10 @@ class User {
   final int? specialistId;
   final String? status;
   final String? image;
-  final Clinic? clinic;
+  final ClinicModel? clinic;
   final Specialist? specialist;
 
-  User({
+  DoctorModel({
     this.id,
     this.name,
     this.email,
@@ -82,11 +83,12 @@ class User {
     this.specialist,
   });
 
-  factory User.fromJson(String str) => User.fromMap(json.decode(str));
+  factory DoctorModel.fromJson(String str) =>
+      DoctorModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory User.fromMap(Map<String, dynamic> json) => User(
+  factory DoctorModel.fromMap(Map<String, dynamic> json) => DoctorModel(
         id: json["id"],
         name: json["name"],
         email: json["email"],
@@ -113,7 +115,8 @@ class User {
         specialistId: json["specialist_id"],
         status: json["status"],
         image: json["image"],
-        clinic: json["clinic"] == null ? null : Clinic.fromMap(json["clinic"]),
+        clinic:
+            json["clinic"] == null ? null : ClinicModel.fromMap(json["clinic"]),
         specialist: json["specialist"] == null
             ? null
             : Specialist.fromMap(json["specialist"]),
@@ -147,7 +150,7 @@ class User {
       };
 }
 
-class Clinic {
+class ClinicModel {
   final int? id;
   final String? name;
   final String? address;
@@ -162,7 +165,7 @@ class Clinic {
   final DateTime? createdAt;
   final DateTime? updatedAt;
 
-  Clinic({
+  ClinicModel({
     this.id,
     this.name,
     this.address,
@@ -178,11 +181,12 @@ class Clinic {
     this.updatedAt,
   });
 
-  factory Clinic.fromJson(String str) => Clinic.fromMap(json.decode(str));
+  factory ClinicModel.fromJson(String str) =>
+      ClinicModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory Clinic.fromMap(Map<String, dynamic> json) => Clinic(
+  factory ClinicModel.fromMap(Map<String, dynamic> json) => ClinicModel(
         id: json["id"],
         name: json["name"],
         address: json["address"],

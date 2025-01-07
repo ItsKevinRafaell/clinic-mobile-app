@@ -36,10 +36,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
         .read<LoginGoogleBloc>()
         .add(LoginGoogleEvent.loginGoogle(googleAuth?.idToken ?? ''));
 
-    context
-        .read<LoginGoogleBloc>()
-        .add(LoginGoogleEvent.loginGoogle(googleAuth?.idToken ?? ''));
-
     // Create a new credential
     final credential = GoogleAuthProvider.credential(
       accessToken: googleAuth?.accessToken,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_clinicmobile_app_kevin/core/extensions/build_context_ext.dart';
+import 'package:flutter_clinicmobile_app_kevin/data/datasources/auth_local_datasource.dart';
+import 'package:flutter_clinicmobile_app_kevin/presentation/auth/pages/onboarding_page.dart';
 
 import '../../../../core/assets/assets.gen.dart';
 import '../../../../core/components/spaces.dart';
@@ -92,7 +94,13 @@ class ProfilePage extends StatelessWidget {
             _menuItem(Assets.icons.document.path, 'Kebijakan Layanan'),
             const SpaceHeight(16),
             _menuItem(Assets.icons.help.path, 'Bantuan'), const SpaceHeight(16),
-            _menuItem(Assets.icons.logout.path, 'Keluarga'),
+            InkWell(
+              onTap: () async {
+                await AuthLocalDatasource().removeUserData();
+                context.pushReplacement(const OnboardingPage());
+              },
+              child: _menuItem(Assets.icons.logout.path, 'Keluar'),
+            ),
             const SpaceHeight(16),
             // Padding(
             //   padding: EdgeInsets.only(top: context.deviceHeight * 0.2, left: 20, right: 20),
