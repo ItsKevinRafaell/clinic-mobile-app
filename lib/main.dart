@@ -3,11 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clinicmobile_app_kevin/data/datasources/auth_remote_datasource.dart';
 import 'package:flutter_clinicmobile_app_kevin/data/datasources/doctor_remote_datasource.dart';
+import 'package:flutter_clinicmobile_app_kevin/data/datasources/order_remote_datasource.dart';
 import 'package:flutter_clinicmobile_app_kevin/data/datasources/user_remote_datasource.dart';
 import 'package:flutter_clinicmobile_app_kevin/presentation/auth/blocs/login_google/login_google_bloc.dart';
 import 'package:flutter_clinicmobile_app_kevin/presentation/auth/blocs/update_user/update_user_bloc.dart';
 import 'package:flutter_clinicmobile_app_kevin/presentation/auth/pages/onboarding_page.dart';
 import 'package:flutter_clinicmobile_app_kevin/presentation/chat/bloc/doctor_chat/doctor_chat_bloc.dart';
+import 'package:flutter_clinicmobile_app_kevin/presentation/history/bloc/patient_history/patient_history_bloc.dart';
 import 'package:flutter_clinicmobile_app_kevin/presentation/home/pages/home_page.dart';
 import 'package:flutter_clinicmobile_app_kevin/presentation/telemedis/blocs/doctor_telemedis/doctor_telemedis_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -48,6 +50,8 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
             create: (context) => UpdateUserBloc(UserRemoteDatasource())),
+        BlocProvider(
+            create: (context) => PatientHistoryBloc(OrderRemoteDatasource())),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

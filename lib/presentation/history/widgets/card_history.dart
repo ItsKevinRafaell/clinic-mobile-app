@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clinicmobile_app_kevin/core/extensions/build_context_ext.dart';
+import 'package:flutter_clinicmobile_app_kevin/core/extensions/string_ext.dart';
+import 'package:flutter_clinicmobile_app_kevin/data/models/response/order_response_model.dart';
+import 'package:flutter_clinicmobile_app_kevin/utils/convert.dart';
 
 import '../../../../core/assets/assets.gen.dart';
 import '../../../../core/components/spaces.dart';
 import '../../../../core/constants/colors.dart';
 
 class CardHistory extends StatelessWidget {
-  const CardHistory({super.key});
+  final OrderModel order;
+  const CardHistory({super.key, required this.order});
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +39,8 @@ class CardHistory extends StatelessWidget {
                   color: AppColors.primary,
                   borderRadius: BorderRadius.circular(16.0),
                 ),
-                child: Image.asset(
-                  Assets.images.doctor1.path,
+                child: Image.network(
+                  order.patient!.image ?? "https://i.pravatar.cc/300",
                   width: 87.0,
                   height: 87.0,
                   fit: BoxFit.cover,
@@ -47,16 +51,16 @@ class CardHistory extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Chat Premium',
+                    Text(
+                      order.service!,
                       style: TextStyle(
                         fontSize: 14.0,
                         fontWeight: FontWeight.w500,
                         color: Colors.black,
                       ),
                     ),
-                    const Text(
-                      'dr Kiara Tasbiha',
+                    Text(
+                      order.doctor!.name!,
                       style: TextStyle(
                         fontSize: 10.0,
                         fontWeight: FontWeight.w400,
@@ -66,8 +70,8 @@ class CardHistory extends StatelessWidget {
                       ),
                     ),
                     const SpaceHeight(8),
-                    const Text(
-                      "20 November 2024, Pukul 17:45",
+                    Text(
+                      "${Convert.formatToReadableDate(order.schedule.toString())}, Pukul ${Convert.formatToReadableTime(order.schedule.toString())}",
                       style: TextStyle(
                         fontSize: 10.0,
                         fontWeight: FontWeight.w400,
@@ -78,7 +82,7 @@ class CardHistory extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Column(
+                        Column(
                           children: [
                             Text(
                               "Total Bayar",
@@ -89,7 +93,7 @@ class CardHistory extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              "Rp. 19.000",
+                              order.price!.toString().currencyFormatRpV2,
                               style: TextStyle(
                                 fontSize: 12.0,
                                 fontWeight: FontWeight.w600,
@@ -106,34 +110,71 @@ class CardHistory extends StatelessWidget {
                             vertical: 4,
                           ),
                           decoration: BoxDecoration(
-                            color: const Color(0xff25B865).withOpacity(
-                              0.1,
-                            ),
+                            color: order.status?.toLowerCase() == 'approved' ||
+                                    order.status?.toLowerCase() == 'done'
+                                ? const Color(0xff25B865).withOpacity(0.1)
+                                : order.status?.toLowerCase() == 'canceled' ||
+                                        order.status?.toLowerCase() ==
+                                            'rejected'
+                                    ? const Color(0xffFF6854).withOpacity(0.1)
+                                    : order.status?.toLowerCase() == 'waiting'
+                                        ? const Color(0xffF2C94C)
+                                            .withOpacity(0.1)
+                                        : const Color(0xff718096)
+                                            .withOpacity(0.1),
                             borderRadius: BorderRadius.circular(
                               10,
                             ),
                           ),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
                                 height: 8,
                                 width: 8,
-                                decoration: const BoxDecoration(
-                                  color: Color(
-                                    0xff25B865,
-                                  ),
+                                decoration: BoxDecoration(
+                                  color: order.status?.toLowerCase() ==
+                                              'approved' ||
+                                          order.status?.toLowerCase() == 'done'
+                                      ? const Color(
+                                          0xff25B865) // Green for completed
+                                      : order.status?.toLowerCase() ==
+                                                  'canceled' ||
+                                              order.status?.toLowerCase() ==
+                                                  'rejected'
+                                          ? const Color(
+                                              0xffFF6854) // Red for cancelled
+                                          : order.status?.toLowerCase() ==
+                                                  'waiting'
+                                              ? const Color(
+                                                  0xffF2C94C) // Yellow for waiting
+                                              : const Color(
+                                                  0xff718096), // Gray for other status
                                   shape: BoxShape.circle,
                                 ),
                               ),
-                              const Text(
-                                "Selesai",
+                              Text(
+                                "${order.status}",
                                 style: TextStyle(
                                   fontSize: 12.0,
                                   fontWeight: FontWeight.w500,
-                                  color: Color(
-                                    0xff25B865,
-                                  ),
+                                  color: order.status?.toLowerCase() ==
+                                              'approved' ||
+                                          order.status?.toLowerCase() == 'done'
+                                      ? const Color(
+                                          0xff25B865) // Green for completed
+                                      : order.status?.toLowerCase() ==
+                                                  'canceled' ||
+                                              order.status?.toLowerCase() ==
+                                                  'rejected'
+                                          ? const Color(
+                                              0xffFF6854) // Red for cancelled
+                                          : order.status?.toLowerCase() ==
+                                                  'waiting'
+                                              ? const Color(
+                                                  0xffF2C94C) // Yellow for waiting
+                                              : const Color(
+                                                  0xff718096), // Gray for other status
                                 ),
                               ),
                             ],
