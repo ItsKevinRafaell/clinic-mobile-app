@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clinicmobile_app_kevin/core/extensions/build_context_ext.dart';
+import 'package:flutter_clinicmobile_app_kevin/core/extensions/string_ext.dart';
+import 'package:flutter_clinicmobile_app_kevin/data/datasources/auth_local_datasource.dart';
+import 'package:flutter_clinicmobile_app_kevin/data/models/request/create_order_request_model.dart';
+import 'package:flutter_clinicmobile_app_kevin/data/models/response/doctor_response_model.dart';
+import 'package:flutter_clinicmobile_app_kevin/presentation/chat/blocs/create_order/create_order_bloc.dart';
+import 'package:flutter_clinicmobile_app_kevin/presentation/chat/pages/payment_url_page.dart';
 
 import '../../../../core/components/spaces.dart';
 import '../../../../core/constants/colors.dart';
@@ -10,7 +17,10 @@ import '../widgets/card_premium_chat.dart';
 import 'payment_page.dart';
 
 class PremiumChatPage extends StatelessWidget {
-  const PremiumChatPage({super.key});
+  final bool isTelemedis;
+  final DoctorModel doctor;
+  const PremiumChatPage(
+      {super.key, required this.isTelemedis, required this.doctor});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +43,7 @@ class PremiumChatPage extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
@@ -45,7 +55,9 @@ class PremiumChatPage extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "Rp. 40.000",
+                    isTelemedis
+                        ? doctor.telemedicineFee.toString().currencyFormatRpV2
+                        : doctor.chatFee.toString().currencyFormatRpV2,
                     style: TextStyle(
                       fontSize: 13.0,
                       fontWeight: FontWeight.w600,
@@ -56,15 +68,58 @@ class PremiumChatPage extends StatelessWidget {
                   ),
                 ],
               ),
-              Button.filled(
-                width: 120,
-                height: 40,
-                borderRadius: 10,
-                onPressed: () {
-                  context.push(const PaymentPage());
+              BlocConsumer<CreateOrderBloc, CreateOrderState>(
+                listener: (context, state) {
+                  state.maybeWhen(orElse: () {
+                    context.showSnackBar(
+                        'Gagal melakukan pembayaran', Colors.red);
+                  }, error: (message) {
+                    context.showSnackBar(message, Colors.red);
+                  }, success: (data) {
+                    if (data.data != null) {
+                      context.push(PaymentUrlPage(
+                        invoiceUrl: data.data!.paymentUrl,
+                        orderId: data.data!.id.toString(),
+                      ));
+                    } else {
+                      context.showSnackBar(
+                          'Data pembayaran tidak tersedia', Colors.red);
+                    }
+                  });
                 },
-                label: 'Chat Sekarang',
-                fontSize: 12.0,
+                builder: (context, state) {
+                  return state.maybeWhen(orElse: () {
+                    return Button.filled(
+                      width: 120,
+                      height: 40,
+                      borderRadius: 10,
+                      onPressed: () async {
+                        final userData =
+                            await AuthLocalDatasource().getUserData();
+                        final data = CreateOrderRequestModel(
+                          doctorId: doctor.id!,
+                          patientId: userData!.data!.user!.id!,
+                          service: isTelemedis ? 'Telemedis' : 'Chat Premium',
+                          price: isTelemedis
+                              ? doctor.telemedicineFee!.toInt()
+                              : doctor.chatFee!.toInt(),
+                          duration: 30,
+                          clinicId: doctor.clinicId!,
+                          schedule: DateTime.now(),
+                        );
+                        context
+                            .read<CreateOrderBloc>()
+                            .add(CreateOrderEvent.createOrder(model: data));
+                      },
+                      label: isTelemedis ? 'Order Telemedis' : 'Order Chat',
+                      fontSize: 11.0,
+                    );
+                  }, loading: () {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  });
+                },
               )
             ],
           ),
@@ -98,8 +153,8 @@ class PremiumChatPage extends StatelessWidget {
                       ),
                     ),
                     SpaceWidth(context.deviceWidth * 0.2),
-                    const Text(
-                      "Premium Chat",
+                    Text(
+                      "Premium ${isTelemedis ? 'Telemedis' : 'Chat'}",
                       style: TextStyle(
                         fontSize: 18.0,
                         fontWeight: FontWeight.w500,
@@ -109,9 +164,11 @@ class PremiumChatPage extends StatelessWidget {
                   ],
                 ),
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.all(20),
-                child: CardPremiumChat(),
+                child: CardPremiumChat(
+                  doctor: doctor,
+                ),
               ),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 20),

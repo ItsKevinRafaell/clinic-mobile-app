@@ -63,9 +63,12 @@ class DetailDoctorPage extends StatelessWidget {
                 height: 40,
                 borderRadius: 10,
                 onPressed: () {
-                  context.push(const PremiumChatPage());
+                  context.push(PremiumChatPage(
+                    isTelemedis: isTelemedis,
+                    doctor: doctor,
+                  ));
                 },
-                label: 'Chat Sekarang',
+                label: isTelemedis ? 'Call Sekarang' : 'Chat Sekarang',
                 fontSize: 12.0,
               )
             ],

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'patient_history_bloc.dart';
+part of 'xendit_callback_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,65 +15,65 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$PatientHistoryEvent {
+mixin _$XenditCallbackEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getOrdersPatient,
+    required TResult Function(String externalId, String status) callback,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getOrdersPatient,
+    TResult? Function(String externalId, String status)? callback,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getOrdersPatient,
+    TResult Function(String externalId, String status)? callback,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetOrdersPatient value) getOrdersPatient,
+    required TResult Function(_Callback value) callback,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetOrdersPatient value)? getOrdersPatient,
+    TResult? Function(_Callback value)? callback,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetOrdersPatient value)? getOrdersPatient,
+    TResult Function(_Callback value)? callback,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PatientHistoryEventCopyWith<$Res> {
-  factory $PatientHistoryEventCopyWith(
-          PatientHistoryEvent value, $Res Function(PatientHistoryEvent) then) =
-      _$PatientHistoryEventCopyWithImpl<$Res, PatientHistoryEvent>;
+abstract class $XenditCallbackEventCopyWith<$Res> {
+  factory $XenditCallbackEventCopyWith(
+          XenditCallbackEvent value, $Res Function(XenditCallbackEvent) then) =
+      _$XenditCallbackEventCopyWithImpl<$Res, XenditCallbackEvent>;
 }
 
 /// @nodoc
-class _$PatientHistoryEventCopyWithImpl<$Res, $Val extends PatientHistoryEvent>
-    implements $PatientHistoryEventCopyWith<$Res> {
-  _$PatientHistoryEventCopyWithImpl(this._value, this._then);
+class _$XenditCallbackEventCopyWithImpl<$Res, $Val extends XenditCallbackEvent>
+    implements $XenditCallbackEventCopyWith<$Res> {
+  _$XenditCallbackEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of PatientHistoryEvent
+  /// Create a copy of XenditCallbackEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -86,13 +86,13 @@ abstract class _$$StartedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$StartedImplCopyWithImpl<$Res>
-    extends _$PatientHistoryEventCopyWithImpl<$Res, _$StartedImpl>
+    extends _$XenditCallbackEventCopyWithImpl<$Res, _$StartedImpl>
     implements _$$StartedImplCopyWith<$Res> {
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of PatientHistoryEvent
+  /// Create a copy of XenditCallbackEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -103,7 +103,7 @@ class _$StartedImpl implements _Started {
 
   @override
   String toString() {
-    return 'PatientHistoryEvent.started()';
+    return 'XenditCallbackEvent.started()';
   }
 
   @override
@@ -119,7 +119,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getOrdersPatient,
+    required TResult Function(String externalId, String status) callback,
   }) {
     return started();
   }
@@ -128,7 +128,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getOrdersPatient,
+    TResult? Function(String externalId, String status)? callback,
   }) {
     return started?.call();
   }
@@ -137,7 +137,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getOrdersPatient,
+    TResult Function(String externalId, String status)? callback,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -150,7 +150,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetOrdersPatient value) getOrdersPatient,
+    required TResult Function(_Callback value) callback,
   }) {
     return started(this);
   }
@@ -159,7 +159,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetOrdersPatient value)? getOrdersPatient,
+    TResult? Function(_Callback value)? callback,
   }) {
     return started?.call(this);
   }
@@ -168,7 +168,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetOrdersPatient value)? getOrdersPatient,
+    TResult Function(_Callback value)? callback,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -178,75 +178,111 @@ class _$StartedImpl implements _Started {
   }
 }
 
-abstract class _Started implements PatientHistoryEvent {
+abstract class _Started implements XenditCallbackEvent {
   const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$GetOrdersPatientImplCopyWith<$Res> {
-  factory _$$GetOrdersPatientImplCopyWith(_$GetOrdersPatientImpl value,
-          $Res Function(_$GetOrdersPatientImpl) then) =
-      __$$GetOrdersPatientImplCopyWithImpl<$Res>;
+abstract class _$$CallbackImplCopyWith<$Res> {
+  factory _$$CallbackImplCopyWith(
+          _$CallbackImpl value, $Res Function(_$CallbackImpl) then) =
+      __$$CallbackImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String externalId, String status});
 }
 
 /// @nodoc
-class __$$GetOrdersPatientImplCopyWithImpl<$Res>
-    extends _$PatientHistoryEventCopyWithImpl<$Res, _$GetOrdersPatientImpl>
-    implements _$$GetOrdersPatientImplCopyWith<$Res> {
-  __$$GetOrdersPatientImplCopyWithImpl(_$GetOrdersPatientImpl _value,
-      $Res Function(_$GetOrdersPatientImpl) _then)
+class __$$CallbackImplCopyWithImpl<$Res>
+    extends _$XenditCallbackEventCopyWithImpl<$Res, _$CallbackImpl>
+    implements _$$CallbackImplCopyWith<$Res> {
+  __$$CallbackImplCopyWithImpl(
+      _$CallbackImpl _value, $Res Function(_$CallbackImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of PatientHistoryEvent
+  /// Create a copy of XenditCallbackEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? externalId = null,
+    Object? status = null,
+  }) {
+    return _then(_$CallbackImpl(
+      null == externalId
+          ? _value.externalId
+          : externalId // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$GetOrdersPatientImpl implements _GetOrdersPatient {
-  const _$GetOrdersPatientImpl();
+class _$CallbackImpl implements _Callback {
+  const _$CallbackImpl(this.externalId, this.status);
+
+  @override
+  final String externalId;
+  @override
+  final String status;
 
   @override
   String toString() {
-    return 'PatientHistoryEvent.getOrdersPatient()';
+    return 'XenditCallbackEvent.callback(externalId: $externalId, status: $status)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetOrdersPatientImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$CallbackImpl &&
+            (identical(other.externalId, externalId) ||
+                other.externalId == externalId) &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, externalId, status);
+
+  /// Create a copy of XenditCallbackEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CallbackImplCopyWith<_$CallbackImpl> get copyWith =>
+      __$$CallbackImplCopyWithImpl<_$CallbackImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getOrdersPatient,
+    required TResult Function(String externalId, String status) callback,
   }) {
-    return getOrdersPatient();
+    return callback(externalId, status);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getOrdersPatient,
+    TResult? Function(String externalId, String status)? callback,
   }) {
-    return getOrdersPatient?.call();
+    return callback?.call(externalId, status);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getOrdersPatient,
+    TResult Function(String externalId, String status)? callback,
     required TResult orElse(),
   }) {
-    if (getOrdersPatient != null) {
-      return getOrdersPatient();
+    if (callback != null) {
+      return callback(externalId, status);
     }
     return orElse();
   }
@@ -255,45 +291,55 @@ class _$GetOrdersPatientImpl implements _GetOrdersPatient {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetOrdersPatient value) getOrdersPatient,
+    required TResult Function(_Callback value) callback,
   }) {
-    return getOrdersPatient(this);
+    return callback(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetOrdersPatient value)? getOrdersPatient,
+    TResult? Function(_Callback value)? callback,
   }) {
-    return getOrdersPatient?.call(this);
+    return callback?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetOrdersPatient value)? getOrdersPatient,
+    TResult Function(_Callback value)? callback,
     required TResult orElse(),
   }) {
-    if (getOrdersPatient != null) {
-      return getOrdersPatient(this);
+    if (callback != null) {
+      return callback(this);
     }
     return orElse();
   }
 }
 
-abstract class _GetOrdersPatient implements PatientHistoryEvent {
-  const factory _GetOrdersPatient() = _$GetOrdersPatientImpl;
+abstract class _Callback implements XenditCallbackEvent {
+  const factory _Callback(final String externalId, final String status) =
+      _$CallbackImpl;
+
+  String get externalId;
+  String get status;
+
+  /// Create a copy of XenditCallbackEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CallbackImplCopyWith<_$CallbackImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$PatientHistoryState {
+mixin _$XenditCallbackState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(OrderResponseModel data) success,
+    required TResult Function(String message) success,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -301,7 +347,7 @@ mixin _$PatientHistoryState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(OrderResponseModel data)? success,
+    TResult? Function(String message)? success,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -309,7 +355,7 @@ mixin _$PatientHistoryState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(OrderResponseModel data)? success,
+    TResult Function(String message)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -342,23 +388,23 @@ mixin _$PatientHistoryState {
 }
 
 /// @nodoc
-abstract class $PatientHistoryStateCopyWith<$Res> {
-  factory $PatientHistoryStateCopyWith(
-          PatientHistoryState value, $Res Function(PatientHistoryState) then) =
-      _$PatientHistoryStateCopyWithImpl<$Res, PatientHistoryState>;
+abstract class $XenditCallbackStateCopyWith<$Res> {
+  factory $XenditCallbackStateCopyWith(
+          XenditCallbackState value, $Res Function(XenditCallbackState) then) =
+      _$XenditCallbackStateCopyWithImpl<$Res, XenditCallbackState>;
 }
 
 /// @nodoc
-class _$PatientHistoryStateCopyWithImpl<$Res, $Val extends PatientHistoryState>
-    implements $PatientHistoryStateCopyWith<$Res> {
-  _$PatientHistoryStateCopyWithImpl(this._value, this._then);
+class _$XenditCallbackStateCopyWithImpl<$Res, $Val extends XenditCallbackState>
+    implements $XenditCallbackStateCopyWith<$Res> {
+  _$XenditCallbackStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of PatientHistoryState
+  /// Create a copy of XenditCallbackState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -371,13 +417,13 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$PatientHistoryStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$XenditCallbackStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of PatientHistoryState
+  /// Create a copy of XenditCallbackState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -388,7 +434,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'PatientHistoryState.initial()';
+    return 'XenditCallbackState.initial()';
   }
 
   @override
@@ -405,7 +451,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(OrderResponseModel data) success,
+    required TResult Function(String message) success,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -416,7 +462,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(OrderResponseModel data)? success,
+    TResult? Function(String message)? success,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -427,7 +473,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(OrderResponseModel data)? success,
+    TResult Function(String message)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -475,7 +521,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements PatientHistoryState {
+abstract class _Initial implements XenditCallbackState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -488,13 +534,13 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$PatientHistoryStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$XenditCallbackStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of PatientHistoryState
+  /// Create a copy of XenditCallbackState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -505,7 +551,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'PatientHistoryState.loading()';
+    return 'XenditCallbackState.loading()';
   }
 
   @override
@@ -522,7 +568,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(OrderResponseModel data) success,
+    required TResult Function(String message) success,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -533,7 +579,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(OrderResponseModel data)? success,
+    TResult? Function(String message)? success,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -544,7 +590,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(OrderResponseModel data)? success,
+    TResult Function(String message)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -592,7 +638,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements PatientHistoryState {
+abstract class _Loading implements XenditCallbackState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -602,29 +648,29 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({OrderResponseModel data});
+  $Res call({String message});
 }
 
 /// @nodoc
 class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$PatientHistoryStateCopyWithImpl<$Res, _$SuccessImpl>
+    extends _$XenditCallbackStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of PatientHistoryState
+  /// Create a copy of XenditCallbackState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? message = null,
   }) {
     return _then(_$SuccessImpl(
-      null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as OrderResponseModel,
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -632,14 +678,14 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(this.data);
+  const _$SuccessImpl(this.message);
 
   @override
-  final OrderResponseModel data;
+  final String message;
 
   @override
   String toString() {
-    return 'PatientHistoryState.success(data: $data)';
+    return 'XenditCallbackState.success(message: $message)';
   }
 
   @override
@@ -647,13 +693,13 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            (identical(other.data, data) || other.data == data));
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, data);
+  int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of PatientHistoryState
+  /// Create a copy of XenditCallbackState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -666,10 +712,10 @@ class _$SuccessImpl implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(OrderResponseModel data) success,
+    required TResult Function(String message) success,
     required TResult Function(String message) error,
   }) {
-    return success(data);
+    return success(message);
   }
 
   @override
@@ -677,10 +723,10 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(OrderResponseModel data)? success,
+    TResult? Function(String message)? success,
     TResult? Function(String message)? error,
   }) {
-    return success?.call(data);
+    return success?.call(message);
   }
 
   @override
@@ -688,12 +734,12 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(OrderResponseModel data)? success,
+    TResult Function(String message)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(data);
+      return success(message);
     }
     return orElse();
   }
@@ -736,12 +782,12 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements PatientHistoryState {
-  const factory _Success(final OrderResponseModel data) = _$SuccessImpl;
+abstract class _Success implements XenditCallbackState {
+  const factory _Success(final String message) = _$SuccessImpl;
 
-  OrderResponseModel get data;
+  String get message;
 
-  /// Create a copy of PatientHistoryState
+  /// Create a copy of XenditCallbackState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
@@ -759,13 +805,13 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$PatientHistoryStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$XenditCallbackStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of PatientHistoryState
+  /// Create a copy of XenditCallbackState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -791,7 +837,7 @@ class _$ErrorImpl implements _Error {
 
   @override
   String toString() {
-    return 'PatientHistoryState.error(message: $message)';
+    return 'XenditCallbackState.error(message: $message)';
   }
 
   @override
@@ -805,7 +851,7 @@ class _$ErrorImpl implements _Error {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of PatientHistoryState
+  /// Create a copy of XenditCallbackState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -818,7 +864,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(OrderResponseModel data) success,
+    required TResult Function(String message) success,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -829,7 +875,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(OrderResponseModel data)? success,
+    TResult? Function(String message)? success,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -840,7 +886,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(OrderResponseModel data)? success,
+    TResult Function(String message)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -888,12 +934,12 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements PatientHistoryState {
+abstract class _Error implements XenditCallbackState {
   const factory _Error(final String message) = _$ErrorImpl;
 
   String get message;
 
-  /// Create a copy of PatientHistoryState
+  /// Create a copy of XenditCallbackState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>

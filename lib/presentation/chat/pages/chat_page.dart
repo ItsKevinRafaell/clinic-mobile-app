@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clinicmobile_app_kevin/core/extensions/build_context_ext.dart';
-import 'package:flutter_clinicmobile_app_kevin/presentation/chat/bloc/doctor_chat/doctor_chat_bloc.dart';
+import 'package:flutter_clinicmobile_app_kevin/presentation/chat/blocs/doctor_chat/doctor_chat_bloc.dart';
 
 import '../../../core/assets/assets.gen.dart';
 

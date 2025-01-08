@@ -8,7 +8,9 @@ import 'package:flutter_clinicmobile_app_kevin/data/datasources/user_remote_data
 import 'package:flutter_clinicmobile_app_kevin/presentation/auth/blocs/login_google/login_google_bloc.dart';
 import 'package:flutter_clinicmobile_app_kevin/presentation/auth/blocs/update_user/update_user_bloc.dart';
 import 'package:flutter_clinicmobile_app_kevin/presentation/auth/pages/onboarding_page.dart';
-import 'package:flutter_clinicmobile_app_kevin/presentation/chat/bloc/doctor_chat/doctor_chat_bloc.dart';
+import 'package:flutter_clinicmobile_app_kevin/presentation/chat/blocs/bloc/xendit_callback_bloc.dart';
+import 'package:flutter_clinicmobile_app_kevin/presentation/chat/blocs/create_order/create_order_bloc.dart';
+import 'package:flutter_clinicmobile_app_kevin/presentation/chat/blocs/doctor_chat/doctor_chat_bloc.dart';
 import 'package:flutter_clinicmobile_app_kevin/presentation/history/bloc/patient_history/patient_history_bloc.dart';
 import 'package:flutter_clinicmobile_app_kevin/presentation/home/pages/home_page.dart';
 import 'package:flutter_clinicmobile_app_kevin/presentation/telemedis/blocs/doctor_telemedis/doctor_telemedis_bloc.dart';
@@ -43,7 +45,13 @@ class MyApp extends StatelessWidget {
           create: (context) => DoctorTelemedisBloc(DoctorRemoteDatasource()),
         ),
         BlocProvider(
+          create: (context) => CreateOrderBloc(OrderRemoteDatasource()),
+        ),
+        BlocProvider(
           create: (context) => DoctorChatBloc(DoctorRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => XenditCallbackBloc(),
         ),
         BlocProvider(
           create: (context) => LoginGoogleBloc(AuthRemoteDatasource()),

@@ -9,7 +9,8 @@ import '../widgets/text_list_widget.dart';
 import 'terms_of_service_page.dart';
 
 class PrivacyPolicyPage extends StatelessWidget {
-  const PrivacyPolicyPage({super.key});
+  final bool? isNew;
+  const PrivacyPolicyPage({super.key, this.isNew});
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +127,13 @@ class PrivacyPolicyPage extends StatelessWidget {
               const SpaceHeight(16),
               Button.filled(
                   onPressed: () {
-                    context.push(const TermsOfServicePage());
+                    if (isNew == true) {
+                      context.push(const TermsOfServicePage(
+                        isNew: true,
+                      ));
+                    } else {
+                      context.push(const TermsOfServicePage());
+                    }
                   },
                   label: 'Setuju dan Lanjutkan'),
             ],

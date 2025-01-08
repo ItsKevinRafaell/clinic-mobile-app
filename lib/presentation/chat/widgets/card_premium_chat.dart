@@ -2,14 +2,18 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_clinicmobile_app_kevin/core/extensions/build_context_ext.dart';
+import 'package:flutter_clinicmobile_app_kevin/data/models/response/doctor_response_model.dart';
+import 'package:flutter_clinicmobile_app_kevin/utils/convert.dart';
 
 import '../../../../core/assets/assets.gen.dart';
 import '../../../../core/components/spaces.dart';
 import '../../../../core/constants/colors.dart';
 
 class CardPremiumChat extends StatelessWidget {
+  final DoctorModel doctor;
   const CardPremiumChat({
     super.key,
+    required this.doctor,
   });
 
   @override
@@ -39,8 +43,8 @@ class CardPremiumChat extends StatelessWidget {
                   color: AppColors.primary,
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-                child: Image.asset(
-                  Assets.images.doctor1.path,
+                child: Image.network(
+                  doctor.image ?? "https://i.pravatar.cc/300",
                   width: 87.0,
                   height: 87.0,
                   fit: BoxFit.cover,
@@ -51,8 +55,8 @@ class CardPremiumChat extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'dr. Kiara Tasbiha',
+                    Text(
+                      doctor.name!,
                       style: TextStyle(
                         fontSize: 14.0,
                         fontWeight: FontWeight.w600,
@@ -60,8 +64,8 @@ class CardPremiumChat extends StatelessWidget {
                       ),
                     ),
                     const SpaceHeight(4),
-                    const Text(
-                      'Spesialis kandungan',
+                    Text(
+                      doctor.specialist!.name!,
                       style: TextStyle(
                         fontSize: 10.0,
                         fontWeight: FontWeight.w400,
@@ -71,13 +75,13 @@ class CardPremiumChat extends StatelessWidget {
                     const SpaceHeight(10),
                     _itemRow(
                       Assets.icons.hospitalPrimary.path,
-                      'Klinik Sehat Prima',
+                      doctor.clinic!.name!,
                       16.0,
                     ),
                     const SpaceHeight(8),
                     _itemRow(
                       Assets.icons.clockPrimary.path,
-                      '11:00 - 12:00 WIB',
+                      '${Convert.formatToReadableTime2(doctor.openTime.toString())} - ${Convert.formatToReadableTime2(doctor.closeTime.toString())} WIB',
                       16.0,
                     ),
                   ],

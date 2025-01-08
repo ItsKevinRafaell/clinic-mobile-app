@@ -12,4 +12,9 @@ class Convert {
         DateFormat("yyyy-MM-dd HH:mm:ss").parse(dateTimeString);
     return DateFormat("HH::mm").format(parsedDate);
   }
+
+  static String formatToReadableTime2(String dateTimeString) {
+    DateTime parsedDate = DateFormat("HH:mm:ss").parse(dateTimeString);
+    return DateFormat("HH:mm").format(parsedDate);
+  }
 }

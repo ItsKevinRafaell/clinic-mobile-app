@@ -35,7 +35,7 @@ class DoctorRemoteDatasource {
       throw Left('Failed to load data');
     }
   }
-  
+
   Future<Either<String, DoctorResponseModel>> getDoctorChat() async {
     final response = await http.get(
       await Uri.parse('${GlobalVariable.baseUrl}/api/doctors/chat'),

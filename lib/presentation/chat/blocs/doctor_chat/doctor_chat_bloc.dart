@@ -9,8 +9,8 @@ part 'doctor_chat_bloc.freezed.dart';
 
 class DoctorChatBloc extends Bloc<DoctorChatEvent, DoctorChatState> {
   final DoctorRemoteDatasource doctorRemoteDatasource;
-  DoctorChatBloc(this.doctorRemoteDatasource) : super(_Initial()) {
-    on<DoctorChatEvent>((event, emit) async {
+  DoctorChatBloc(this.doctorRemoteDatasource) : super(const _Initial()) {
+    on<_GetDoctorChat>((event, emit) async {
       emit(const _Loading());
       final result = await doctorRemoteDatasource.getDoctorChat();
       result.fold(

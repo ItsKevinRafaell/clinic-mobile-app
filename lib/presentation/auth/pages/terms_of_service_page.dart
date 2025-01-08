@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:flutter_clinicmobile_app_kevin/core/extensions/build_context_ext.dart';
+import 'package:flutter_clinicmobile_app_kevin/presentation/profile/pages/profile_page.dart';
 
 import '../../../../core/components/spaces.dart';
 import '../../../../core/constants/colors.dart';
@@ -10,7 +11,8 @@ import '../widgets/text_list_widget.dart';
 import 'data_pengguna_page.dart';
 
 class TermsOfServicePage extends StatelessWidget {
-  const TermsOfServicePage({super.key});
+  final bool? isNew;
+  const TermsOfServicePage({super.key, this.isNew});
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +124,11 @@ class TermsOfServicePage extends StatelessWidget {
               const SpaceHeight(16),
               Button.filled(
                   onPressed: () {
-                    context.push(const DataPenggunaPage());
+                    if (isNew == true) {
+                      context.push(const DataPenggunaPage());
+                    } else {
+                      context.push(const ProfilePage());
+                    }
                   },
                   label: 'Setuju dan Lanjutkan'),
             ],

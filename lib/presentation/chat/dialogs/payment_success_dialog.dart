@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clinicmobile_app_kevin/core/extensions/build_context_ext.dart';
+import 'package:flutter_clinicmobile_app_kevin/presentation/history/pages/history_page.dart';
 
 import '../../../core/assets/assets.gen.dart';
 import '../../../core/components/buttons.dart';
@@ -50,6 +51,7 @@ class PaymentSuccessDialog extends StatelessWidget {
               fontSize: 15.0,
               onPressed: () {
                 context.pop();
+                context.pushReplacement(const HistoryPage());
               },
               label: 'Konsultasi Sekarang',
             ),

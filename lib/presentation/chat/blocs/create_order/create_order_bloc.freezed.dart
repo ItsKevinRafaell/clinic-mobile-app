@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'patient_history_bloc.dart';
+part of 'create_order_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,65 +15,65 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$PatientHistoryEvent {
+mixin _$CreateOrderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getOrdersPatient,
+    required TResult Function(CreateOrderRequestModel model) createOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getOrdersPatient,
+    TResult? Function(CreateOrderRequestModel model)? createOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getOrdersPatient,
+    TResult Function(CreateOrderRequestModel model)? createOrder,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetOrdersPatient value) getOrdersPatient,
+    required TResult Function(_CreateOrder value) createOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetOrdersPatient value)? getOrdersPatient,
+    TResult? Function(_CreateOrder value)? createOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetOrdersPatient value)? getOrdersPatient,
+    TResult Function(_CreateOrder value)? createOrder,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PatientHistoryEventCopyWith<$Res> {
-  factory $PatientHistoryEventCopyWith(
-          PatientHistoryEvent value, $Res Function(PatientHistoryEvent) then) =
-      _$PatientHistoryEventCopyWithImpl<$Res, PatientHistoryEvent>;
+abstract class $CreateOrderEventCopyWith<$Res> {
+  factory $CreateOrderEventCopyWith(
+          CreateOrderEvent value, $Res Function(CreateOrderEvent) then) =
+      _$CreateOrderEventCopyWithImpl<$Res, CreateOrderEvent>;
 }
 
 /// @nodoc
-class _$PatientHistoryEventCopyWithImpl<$Res, $Val extends PatientHistoryEvent>
-    implements $PatientHistoryEventCopyWith<$Res> {
-  _$PatientHistoryEventCopyWithImpl(this._value, this._then);
+class _$CreateOrderEventCopyWithImpl<$Res, $Val extends CreateOrderEvent>
+    implements $CreateOrderEventCopyWith<$Res> {
+  _$CreateOrderEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of PatientHistoryEvent
+  /// Create a copy of CreateOrderEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -86,13 +86,13 @@ abstract class _$$StartedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$StartedImplCopyWithImpl<$Res>
-    extends _$PatientHistoryEventCopyWithImpl<$Res, _$StartedImpl>
+    extends _$CreateOrderEventCopyWithImpl<$Res, _$StartedImpl>
     implements _$$StartedImplCopyWith<$Res> {
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of PatientHistoryEvent
+  /// Create a copy of CreateOrderEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -103,7 +103,7 @@ class _$StartedImpl implements _Started {
 
   @override
   String toString() {
-    return 'PatientHistoryEvent.started()';
+    return 'CreateOrderEvent.started()';
   }
 
   @override
@@ -119,7 +119,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getOrdersPatient,
+    required TResult Function(CreateOrderRequestModel model) createOrder,
   }) {
     return started();
   }
@@ -128,7 +128,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getOrdersPatient,
+    TResult? Function(CreateOrderRequestModel model)? createOrder,
   }) {
     return started?.call();
   }
@@ -137,7 +137,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getOrdersPatient,
+    TResult Function(CreateOrderRequestModel model)? createOrder,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -150,7 +150,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetOrdersPatient value) getOrdersPatient,
+    required TResult Function(_CreateOrder value) createOrder,
   }) {
     return started(this);
   }
@@ -159,7 +159,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetOrdersPatient value)? getOrdersPatient,
+    TResult? Function(_CreateOrder value)? createOrder,
   }) {
     return started?.call(this);
   }
@@ -168,7 +168,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetOrdersPatient value)? getOrdersPatient,
+    TResult Function(_CreateOrder value)? createOrder,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -178,75 +178,102 @@ class _$StartedImpl implements _Started {
   }
 }
 
-abstract class _Started implements PatientHistoryEvent {
+abstract class _Started implements CreateOrderEvent {
   const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$GetOrdersPatientImplCopyWith<$Res> {
-  factory _$$GetOrdersPatientImplCopyWith(_$GetOrdersPatientImpl value,
-          $Res Function(_$GetOrdersPatientImpl) then) =
-      __$$GetOrdersPatientImplCopyWithImpl<$Res>;
+abstract class _$$CreateOrderImplCopyWith<$Res> {
+  factory _$$CreateOrderImplCopyWith(
+          _$CreateOrderImpl value, $Res Function(_$CreateOrderImpl) then) =
+      __$$CreateOrderImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({CreateOrderRequestModel model});
 }
 
 /// @nodoc
-class __$$GetOrdersPatientImplCopyWithImpl<$Res>
-    extends _$PatientHistoryEventCopyWithImpl<$Res, _$GetOrdersPatientImpl>
-    implements _$$GetOrdersPatientImplCopyWith<$Res> {
-  __$$GetOrdersPatientImplCopyWithImpl(_$GetOrdersPatientImpl _value,
-      $Res Function(_$GetOrdersPatientImpl) _then)
+class __$$CreateOrderImplCopyWithImpl<$Res>
+    extends _$CreateOrderEventCopyWithImpl<$Res, _$CreateOrderImpl>
+    implements _$$CreateOrderImplCopyWith<$Res> {
+  __$$CreateOrderImplCopyWithImpl(
+      _$CreateOrderImpl _value, $Res Function(_$CreateOrderImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of PatientHistoryEvent
+  /// Create a copy of CreateOrderEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? model = null,
+  }) {
+    return _then(_$CreateOrderImpl(
+      model: null == model
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as CreateOrderRequestModel,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$GetOrdersPatientImpl implements _GetOrdersPatient {
-  const _$GetOrdersPatientImpl();
+class _$CreateOrderImpl implements _CreateOrder {
+  const _$CreateOrderImpl({required this.model});
+
+  @override
+  final CreateOrderRequestModel model;
 
   @override
   String toString() {
-    return 'PatientHistoryEvent.getOrdersPatient()';
+    return 'CreateOrderEvent.createOrder(model: $model)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetOrdersPatientImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$CreateOrderImpl &&
+            (identical(other.model, model) || other.model == model));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, model);
+
+  /// Create a copy of CreateOrderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CreateOrderImplCopyWith<_$CreateOrderImpl> get copyWith =>
+      __$$CreateOrderImplCopyWithImpl<_$CreateOrderImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getOrdersPatient,
+    required TResult Function(CreateOrderRequestModel model) createOrder,
   }) {
-    return getOrdersPatient();
+    return createOrder(model);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getOrdersPatient,
+    TResult? Function(CreateOrderRequestModel model)? createOrder,
   }) {
-    return getOrdersPatient?.call();
+    return createOrder?.call(model);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getOrdersPatient,
+    TResult Function(CreateOrderRequestModel model)? createOrder,
     required TResult orElse(),
   }) {
-    if (getOrdersPatient != null) {
-      return getOrdersPatient();
+    if (createOrder != null) {
+      return createOrder(model);
     }
     return orElse();
   }
@@ -255,45 +282,54 @@ class _$GetOrdersPatientImpl implements _GetOrdersPatient {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetOrdersPatient value) getOrdersPatient,
+    required TResult Function(_CreateOrder value) createOrder,
   }) {
-    return getOrdersPatient(this);
+    return createOrder(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetOrdersPatient value)? getOrdersPatient,
+    TResult? Function(_CreateOrder value)? createOrder,
   }) {
-    return getOrdersPatient?.call(this);
+    return createOrder?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetOrdersPatient value)? getOrdersPatient,
+    TResult Function(_CreateOrder value)? createOrder,
     required TResult orElse(),
   }) {
-    if (getOrdersPatient != null) {
-      return getOrdersPatient(this);
+    if (createOrder != null) {
+      return createOrder(this);
     }
     return orElse();
   }
 }
 
-abstract class _GetOrdersPatient implements PatientHistoryEvent {
-  const factory _GetOrdersPatient() = _$GetOrdersPatientImpl;
+abstract class _CreateOrder implements CreateOrderEvent {
+  const factory _CreateOrder({required final CreateOrderRequestModel model}) =
+      _$CreateOrderImpl;
+
+  CreateOrderRequestModel get model;
+
+  /// Create a copy of CreateOrderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CreateOrderImplCopyWith<_$CreateOrderImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$PatientHistoryState {
+mixin _$CreateOrderState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(OrderResponseModel data) success,
+    required TResult Function(CreateOrderResponseModel data) success,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -301,7 +337,7 @@ mixin _$PatientHistoryState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(OrderResponseModel data)? success,
+    TResult? Function(CreateOrderResponseModel data)? success,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -309,7 +345,7 @@ mixin _$PatientHistoryState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(OrderResponseModel data)? success,
+    TResult Function(CreateOrderResponseModel data)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -342,23 +378,23 @@ mixin _$PatientHistoryState {
 }
 
 /// @nodoc
-abstract class $PatientHistoryStateCopyWith<$Res> {
-  factory $PatientHistoryStateCopyWith(
-          PatientHistoryState value, $Res Function(PatientHistoryState) then) =
-      _$PatientHistoryStateCopyWithImpl<$Res, PatientHistoryState>;
+abstract class $CreateOrderStateCopyWith<$Res> {
+  factory $CreateOrderStateCopyWith(
+          CreateOrderState value, $Res Function(CreateOrderState) then) =
+      _$CreateOrderStateCopyWithImpl<$Res, CreateOrderState>;
 }
 
 /// @nodoc
-class _$PatientHistoryStateCopyWithImpl<$Res, $Val extends PatientHistoryState>
-    implements $PatientHistoryStateCopyWith<$Res> {
-  _$PatientHistoryStateCopyWithImpl(this._value, this._then);
+class _$CreateOrderStateCopyWithImpl<$Res, $Val extends CreateOrderState>
+    implements $CreateOrderStateCopyWith<$Res> {
+  _$CreateOrderStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of PatientHistoryState
+  /// Create a copy of CreateOrderState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -371,13 +407,13 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$PatientHistoryStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$CreateOrderStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of PatientHistoryState
+  /// Create a copy of CreateOrderState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -388,7 +424,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'PatientHistoryState.initial()';
+    return 'CreateOrderState.initial()';
   }
 
   @override
@@ -405,7 +441,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(OrderResponseModel data) success,
+    required TResult Function(CreateOrderResponseModel data) success,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -416,7 +452,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(OrderResponseModel data)? success,
+    TResult? Function(CreateOrderResponseModel data)? success,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -427,7 +463,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(OrderResponseModel data)? success,
+    TResult Function(CreateOrderResponseModel data)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -475,7 +511,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements PatientHistoryState {
+abstract class _Initial implements CreateOrderState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -488,13 +524,13 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$PatientHistoryStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$CreateOrderStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of PatientHistoryState
+  /// Create a copy of CreateOrderState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -505,7 +541,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'PatientHistoryState.loading()';
+    return 'CreateOrderState.loading()';
   }
 
   @override
@@ -522,7 +558,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(OrderResponseModel data) success,
+    required TResult Function(CreateOrderResponseModel data) success,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -533,7 +569,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(OrderResponseModel data)? success,
+    TResult? Function(CreateOrderResponseModel data)? success,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -544,7 +580,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(OrderResponseModel data)? success,
+    TResult Function(CreateOrderResponseModel data)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -592,7 +628,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements PatientHistoryState {
+abstract class _Loading implements CreateOrderState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -602,18 +638,18 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({OrderResponseModel data});
+  $Res call({CreateOrderResponseModel data});
 }
 
 /// @nodoc
 class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$PatientHistoryStateCopyWithImpl<$Res, _$SuccessImpl>
+    extends _$CreateOrderStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of PatientHistoryState
+  /// Create a copy of CreateOrderState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -624,7 +660,7 @@ class __$$SuccessImplCopyWithImpl<$Res>
       null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as OrderResponseModel,
+              as CreateOrderResponseModel,
     ));
   }
 }
@@ -635,11 +671,11 @@ class _$SuccessImpl implements _Success {
   const _$SuccessImpl(this.data);
 
   @override
-  final OrderResponseModel data;
+  final CreateOrderResponseModel data;
 
   @override
   String toString() {
-    return 'PatientHistoryState.success(data: $data)';
+    return 'CreateOrderState.success(data: $data)';
   }
 
   @override
@@ -653,7 +689,7 @@ class _$SuccessImpl implements _Success {
   @override
   int get hashCode => Object.hash(runtimeType, data);
 
-  /// Create a copy of PatientHistoryState
+  /// Create a copy of CreateOrderState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -666,7 +702,7 @@ class _$SuccessImpl implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(OrderResponseModel data) success,
+    required TResult Function(CreateOrderResponseModel data) success,
     required TResult Function(String message) error,
   }) {
     return success(data);
@@ -677,7 +713,7 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(OrderResponseModel data)? success,
+    TResult? Function(CreateOrderResponseModel data)? success,
     TResult? Function(String message)? error,
   }) {
     return success?.call(data);
@@ -688,7 +724,7 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(OrderResponseModel data)? success,
+    TResult Function(CreateOrderResponseModel data)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -736,12 +772,12 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements PatientHistoryState {
-  const factory _Success(final OrderResponseModel data) = _$SuccessImpl;
+abstract class _Success implements CreateOrderState {
+  const factory _Success(final CreateOrderResponseModel data) = _$SuccessImpl;
 
-  OrderResponseModel get data;
+  CreateOrderResponseModel get data;
 
-  /// Create a copy of PatientHistoryState
+  /// Create a copy of CreateOrderState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
@@ -759,13 +795,13 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$PatientHistoryStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$CreateOrderStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of PatientHistoryState
+  /// Create a copy of CreateOrderState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -791,7 +827,7 @@ class _$ErrorImpl implements _Error {
 
   @override
   String toString() {
-    return 'PatientHistoryState.error(message: $message)';
+    return 'CreateOrderState.error(message: $message)';
   }
 
   @override
@@ -805,7 +841,7 @@ class _$ErrorImpl implements _Error {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of PatientHistoryState
+  /// Create a copy of CreateOrderState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -818,7 +854,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(OrderResponseModel data) success,
+    required TResult Function(CreateOrderResponseModel data) success,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -829,7 +865,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(OrderResponseModel data)? success,
+    TResult? Function(CreateOrderResponseModel data)? success,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -840,7 +876,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(OrderResponseModel data)? success,
+    TResult Function(CreateOrderResponseModel data)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -888,12 +924,12 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements PatientHistoryState {
+abstract class _Error implements CreateOrderState {
   const factory _Error(final String message) = _$ErrorImpl;
 
   String get message;
 
-  /// Create a copy of PatientHistoryState
+  /// Create a copy of CreateOrderState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>

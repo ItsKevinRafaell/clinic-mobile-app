@@ -46,6 +46,7 @@ dependencies:
   intl: ^0.20.1
   shared_preferences: ^2.3.5
   vector_graphics: any
+  webview_flutter: ^4.10.0
 
 dev_dependencies:
   build_runner: ^2.4.13
